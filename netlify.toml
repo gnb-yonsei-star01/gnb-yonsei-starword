@@ -1,0 +1,11 @@
+# netlify.toml  ── 단어장 사이트 폴더 맨 위(루트)에 둡니다
+
+[functions]
+  directory = "netlify/functions"
+
+# /api/<이름표> 로 들어온 요청을, 이름표를 key 로 넘겨 프록시 함수로 전달
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/proxy?key=:splat"
+  status = 200
+  force = true
