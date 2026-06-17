@@ -1791,7 +1791,7 @@ function renderStudy(){
     </div>`;
   studyList=aw; studyI=0;
   showStudyCard();
-  studyT=setInterval(()=>{ studyI++; if(studyI>=studyList.length){ stopStudy(); done('wordStudy'); setTimeout(()=>showStudyDoneCard(),300); } else showStudyCard(); }, 12000);
+  studyT=setInterval(()=>{ studyI++; if(studyI>=studyList.length){ stopStudy(); done('wordStudy'); setTimeout(()=>showStudyDoneCard(),300); } else showStudyCard(); }, 10000);
 }
 function showStudyCard(){
   const w=studyList[studyI];
@@ -1800,9 +1800,9 @@ function showStudyCard(){
   document.getElementById('sbarCnt').textContent=`${studyI+1}/${studyList.length}`;
   document.getElementById('sbarLbl').textContent=`${studyI+1}번째 단어 ✨`;
 
-  // 🆕 "다음 →" 버튼 7초 카운트다운 (그동안은 비활성)
+  // 🆕 "다음 →" 버튼 5초 카운트다운 (그동안은 비활성)
   clearInterval(nextBtnT);
-  let remaining = 7;
+  let remaining = 5;
   const initBtn = document.getElementById('nextBtn');
   if(initBtn){
     initBtn.style.opacity = '0.35';
@@ -1838,7 +1838,7 @@ function studyNext(){
   clearInterval(studyT); clearInterval(nextBtnT); studyI++;
   if(studyI>=studyList.length){ stopStudy(); done('wordStudy'); showStudyDoneCard(); return; }
   showStudyCard();
-  studyT=setInterval(()=>{ studyI++; if(studyI>=studyList.length){ stopStudy(); done('wordStudy'); setTimeout(()=>showStudyDoneCard(),300); } else showStudyCard(); },12000);
+  studyT=setInterval(()=>{ studyI++; if(studyI>=studyList.length){ stopStudy(); done('wordStudy'); setTimeout(()=>showStudyDoneCard(),300); } else showStudyCard(); },10000);
 }
 function stopStudy(){
   if(studyT){ clearInterval(studyT); studyT=null; }
